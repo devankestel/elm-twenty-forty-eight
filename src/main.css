@@ -3,10 +3,62 @@ body {
   font-size: 30px;
   margin: 0;
   text-align: center;
-  color: #293c4b;
+  color: #0D86E4;
 }
 
 img {
   margin: 20px 0;
   max-width: 200px;
 }
+
+.block {
+  color: white;
+  width: 100px;
+  height: 100px;
+}
+
+.red {
+  background-color: red;
+}
+
+.orange {
+  background-color: orange;
+}
+
+.yellow {
+  background-color: yellow;
+}
+
+.green {
+  background-color: green;
+}
+
+.blue {
+  background-color: blue;
+}
+
+.purple {
+  background-color: purple;
+}
+
+.pink {
+  background-color: pink;
+}
+
+.brown {
+  background-color: brown;
+}
+
+.gray {
+  background-color: gray;
+}
+
+.black {
+  background-color: black;
+}
+
+.gold {
+  background-color: gold;
+}
+
+
