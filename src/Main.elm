@@ -33,7 +33,7 @@ type alias Position =
 
 blankTileBluePrint : TileBlueprint
 blankTileBluePrint =
-    { color = "darkgray", label = "", value = 0 }
+    { color = "gray", label = "", value = 0 }
 
 
 aTileBluePrint : TileBlueprint
@@ -94,16 +94,52 @@ kTileBluePrint =
 tiles : List Tile
 tiles =
     [ { position = ( 1, 1 )
-      , tileBlueprint = aTileBluePrint
+      , tileBlueprint = blankTileBluePrint
       }
     , { position = ( 1, 2 )
-      , tileBlueprint = bTileBluePrint
+      , tileBlueprint = blankTileBluePrint
+      }
+    , { position = ( 1, 3 )
+      , tileBlueprint = blankTileBluePrint
+      }
+    , { position = ( 1, 4 )
+      , tileBlueprint = blankTileBluePrint
       }
     , { position = ( 2, 1 )
-      , tileBlueprint = cTileBluePrint
+      , tileBlueprint = blankTileBluePrint
       }
     , { position = ( 2, 2 )
-      , tileBlueprint = dTileBluePrint
+      , tileBlueprint = blankTileBluePrint
+      }
+    , { position = ( 2, 3 )
+      , tileBlueprint = blankTileBluePrint
+      }
+    , { position = ( 2, 4 )
+      , tileBlueprint = blankTileBluePrint
+      }
+    , { position = ( 3, 1 )
+      , tileBlueprint = blankTileBluePrint
+      }
+    , { position = ( 3, 2 )
+      , tileBlueprint = blankTileBluePrint
+      }
+    , { position = ( 3, 3 )
+      , tileBlueprint = blankTileBluePrint
+      }
+    , { position = ( 3, 4 )
+      , tileBlueprint = blankTileBluePrint
+      }
+    , { position = ( 4, 1 )
+      , tileBlueprint = blankTileBluePrint
+      }
+    , { position = ( 4, 2 )
+      , tileBlueprint = blankTileBluePrint
+      }
+    , { position = ( 4, 3 )
+      , tileBlueprint = blankTileBluePrint
+      }
+    , { position = ( 4, 4 )
+      , tileBlueprint = blankTileBluePrint
       }
     ]
 
@@ -138,7 +174,10 @@ update msg model =
 view : Model -> Html Msg
 view model =
     div []
-        [ img [ src "/logo.svg" ] []
+        [ div [] [ text "2048" ]
+        , div [] [ text "Score" ]
+        , div [] [ text "Best" ]
+        , div [] [ text "New Game" ]
         , div [] [ text (toString model.grid) ]
         , gridPrintout model.grid
         ]

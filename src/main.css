@@ -66,11 +66,10 @@ img {
   flex-wrap: wrap;
   align-items: center; /* center? */
   align-content: space-around; /* space-around? */
-  width: 250px;
-  height: 250px;
+  width: 490px;
+  height: 490px;
   background-color: black;
-  border: 5px;
-  margin: 75px 600px 75px 600px;
+  margin: 75px 400px 75px 400px;
 }
 
 .flex-box {
