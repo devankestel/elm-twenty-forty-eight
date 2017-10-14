@@ -33,7 +33,7 @@ type alias Position =
 
 blankTileBluePrint : TileBlueprint
 blankTileBluePrint =
-    { color = "none", label = "", value = 0 }
+    { color = "darkgray", label = "", value = 0 }
 
 
 aTileBluePrint : TileBlueprint
@@ -73,37 +73,37 @@ gTileBluePrint =
 
 hTileBluePrint : TileBlueprint
 hTileBluePrint =
-    { color = "brown", label = "H", value = 2 }
+    { color = "brown", label = "H", value = 256 }
 
 
 iTileBluePrint : TileBlueprint
 iTileBluePrint =
-    { color = "black", label = "I", value = 2 }
+    { color = "black", label = "I", value = 512 }
 
 
 jTileBluePrint : TileBlueprint
 jTileBluePrint =
-    { color = "gray", label = "J", value = 2 }
+    { color = "gray", label = "J", value = 1024 }
 
 
 kTileBluePrint : TileBlueprint
 kTileBluePrint =
-    { color = "gold", label = "K", value = 2 }
+    { color = "gold", label = "K", value = 2048 }
 
 
 tiles : List Tile
 tiles =
     [ { position = ( 1, 1 )
-      , tileBlueprint = blankTileBluePrint
-      }
-    , { position = ( 1, 2 )
-      , tileBlueprint = blankTileBluePrint
-      }
-    , { position = ( 2, 1 )
       , tileBlueprint = aTileBluePrint
       }
+    , { position = ( 1, 2 )
+      , tileBlueprint = bTileBluePrint
+      }
+    , { position = ( 2, 1 )
+      , tileBlueprint = cTileBluePrint
+      }
     , { position = ( 2, 2 )
-      , tileBlueprint = blankTileBluePrint
+      , tileBlueprint = dTileBluePrint
       }
     ]
 
@@ -140,22 +140,23 @@ view model =
     div []
         [ img [ src "/logo.svg" ] []
         , div [] [ text (toString model.grid) ]
-          -- , TileBlueprintList model.TileBlueprints
-        , div [] [ text "Reworking the Model" ]
+        , gridPrintout model.grid
         ]
 
 
+gridPrintout : List Tile -> Html Msg
+gridPrintout grid =
+    grid
+        |> List.map tile
+        |> div [ class "flex-container" ]
 
--- TileBlueprintList : List TileBlueprint -> Html Msg
--- TileBlueprintList TileBlueprints =
---     TileBlueprints
---         |> List.map TileBlueprint
---         |> div []
--- TileBlueprint : TileBlueprint -> Html Msg
--- TileBlueprint TileBlueprint =
---     div []
---         [ div [ class "TileBlueprint", class TileBlueprint.color ] [ text TileBlueprint.label ]
---         ]
+
+tile : Tile -> Html Msg
+tile tile =
+    div [ class "block flex-box", class tile.tileBlueprint.color ] [ text tile.tileBlueprint.label ]
+
+
+
 ---- PROGRAM ----
 
 

@@ -13,8 +13,6 @@ img {
 
 .block {
   color: white;
-  width: 100px;
-  height: 100px;
 }
 
 .red {
@@ -59,6 +57,25 @@ img {
 
 .gold {
   background-color: gold;
+}
+
+.flex-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  align-items: center; /* center? */
+  align-content: space-around; /* space-around? */
+  width: 250px;
+  height: 250px;
+  background-color: black;
+  border: 5px;
+  margin: 75px 600px 75px 600px;
+}
+
+.flex-box {
+  width: 100px;
+  height: 100px;
 }
 
 
