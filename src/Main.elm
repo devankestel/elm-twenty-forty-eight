@@ -7,36 +7,115 @@ import Html.Attributes exposing (..)
 ---- MODEL ----
 
 
-type alias Block =
+type alias Model =
+    { grid : List Tile
+    , score : Int
+    , isAlive : Bool
+    }
+
+
+type alias TileBlueprint =
     { color : String
     , label : String
     , value : Int
     }
 
 
-type alias Model =
-    { blocks : List Block }
+type alias Tile =
+    { position : Position
+    , tileBlueprint : TileBlueprint
+    }
 
 
-blocks : List Block
-blocks =
-    [ { color = "red", label = "A", value = 2 }
-    , { color = "orange", label = "B", value = 4 }
-    , { color = "yellow", label = "C", value = 8 }
-    , { color = "green", label = "D", value = 16 }
-    , { color = "blue", label = "E", value = 32 }
-    , { color = "purple", label = "F", value = 64 }
-    , { color = "pink", label = "G", value = 128 }
-    , { color = "brown", label = "H", value = 2 }
-    , { color = "black", label = "I", value = 2 }
-    , { color = "gray", label = "J", value = 2 }
-    , { color = "gold", label = "K", value = 2 }
+type alias Position =
+    ( Int, Int )
+
+
+blankTileBluePrint : TileBlueprint
+blankTileBluePrint =
+    { color = "none", label = "", value = 0 }
+
+
+aTileBluePrint : TileBlueprint
+aTileBluePrint =
+    { color = "red", label = "A", value = 2 }
+
+
+bTileBluePrint : TileBlueprint
+bTileBluePrint =
+    { color = "orange", label = "B", value = 4 }
+
+
+cTileBluePrint : TileBlueprint
+cTileBluePrint =
+    { color = "yellow", label = "C", value = 8 }
+
+
+dTileBluePrint : TileBlueprint
+dTileBluePrint =
+    { color = "green", label = "D", value = 16 }
+
+
+eTileBluePrint : TileBlueprint
+eTileBluePrint =
+    { color = "blue", label = "E", value = 32 }
+
+
+fTileBluePrint : TileBlueprint
+fTileBluePrint =
+    { color = "purple", label = "F", value = 64 }
+
+
+gTileBluePrint : TileBlueprint
+gTileBluePrint =
+    { color = "pink", label = "G", value = 128 }
+
+
+hTileBluePrint : TileBlueprint
+hTileBluePrint =
+    { color = "brown", label = "H", value = 2 }
+
+
+iTileBluePrint : TileBlueprint
+iTileBluePrint =
+    { color = "black", label = "I", value = 2 }
+
+
+jTileBluePrint : TileBlueprint
+jTileBluePrint =
+    { color = "gray", label = "J", value = 2 }
+
+
+kTileBluePrint : TileBlueprint
+kTileBluePrint =
+    { color = "gold", label = "K", value = 2 }
+
+
+tiles : List Tile
+tiles =
+    [ { position = ( 1, 1 )
+      , tileBlueprint = blankTileBluePrint
+      }
+    , { position = ( 1, 2 )
+      , tileBlueprint = blankTileBluePrint
+      }
+    , { position = ( 2, 1 )
+      , tileBlueprint = aTileBluePrint
+      }
+    , { position = ( 2, 2 )
+      , tileBlueprint = blankTileBluePrint
+      }
     ]
 
 
 init : ( Model, Cmd Msg )
 init =
-    ( { blocks = blocks }, Cmd.none )
+    ( { grid = tiles
+      , score = 0
+      , isAlive = True
+      }
+    , Cmd.none
+    )
 
 
 
@@ -60,26 +139,23 @@ view : Model -> Html Msg
 view model =
     div []
         [ img [ src "/logo.svg" ] []
-        , div [] [ text (toString model.blocks) ]
-        , blockList model.blocks
-        ]
-
-
-blockList : List Block -> Html Msg
-blockList blocks =
-    blocks
-        |> List.map block
-        |> div []
-
-
-block : Block -> Html Msg
-block block =
-    div []
-        [ div [ class "block", class block.color ] [ text block.label ]
+        , div [] [ text (toString model.grid) ]
+          -- , TileBlueprintList model.TileBlueprints
+        , div [] [ text "Reworking the Model" ]
         ]
 
 
 
+-- TileBlueprintList : List TileBlueprint -> Html Msg
+-- TileBlueprintList TileBlueprints =
+--     TileBlueprints
+--         |> List.map TileBlueprint
+--         |> div []
+-- TileBlueprint : TileBlueprint -> Html Msg
+-- TileBlueprint TileBlueprint =
+--     div []
+--         [ div [ class "TileBlueprint", class TileBlueprint.color ] [ text TileBlueprint.label ]
+--         ]
 ---- PROGRAM ----
 
 
